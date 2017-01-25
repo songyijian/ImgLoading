@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html id="ne_wrap"> 
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=640,target-densitydpi=device-dpi,user-scalable=no" />
+        <title>预加载_oop</title>
+        <style>#div1{ height: 200px; width: 80%; margin: 0 auto; border: 1px solid red}</style>
+    </head>
+
+    <body>
+        <div id="div1"></div>
+        <script>
+            //要加载的图片 ================
+            var aImg1=[
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/zailaiBtn.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/yes.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/tai.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t7_a.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t7_b.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t7_t.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t3_b.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t1_b.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t4_t.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t2_b.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t3_t.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t3_a.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/bodyBg.jpg',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t5_t.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/jg_2.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t0_b.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/no.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/ren.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t2.jpg',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/p2bg.jpg',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/niu.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/p1bg.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t2_a.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t7.jpg',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t0.jpg',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/jg_4.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t5_b.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t5.jpg',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t5_a.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/jg_1.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t6_b.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/bgBg.jpg',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t4_a.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/renP2.gif',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t3.jpg',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/renP3.gif',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/p1bg1.jpg',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t1.jpg',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t6_a.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t0_a.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t4_b.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/fenxiangBtn.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t2_t.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t0_t.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/fenxiangweixin.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t6.jpg',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/p1bg.jpg',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/jg_3.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/btnGo.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/jiong.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t1_t.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t1_a.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/ren.gif',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t6_t.png',
+                'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t4.jpg'
+            ];
+
+            
+            function ImgLoad(o,goFn,overFn){
+                this.offon=0;
+                this.ratio=0;
+                this.o=o;
+                this.goFn=goFn;
+                this.overFn=overFn;
+                this.init();
+            };
+            ImgLoad.prototype.init = function(){
+                var This=this;
+                for (var i=0; i<this.o.length; i++) {
+                    this.oimg=new Image();
+                    this.oimg.onload=function(){var _i=this; This.fnonload(_i);};
+                    this.oimg.onerror=function(){var _i=this; This.fnerror(_i);};
+                    this.oimg.src=this.o[i];
+                    this.oimg.index=i;
+                };
+            };
+            ImgLoad.prototype.fnonload = function(_i){
+                this.fnOk();
+                console.log(this.ratio+'第:'+_i.index+' 正确  '+_i.src);
+            };
+            ImgLoad.prototype.fnerror=function(_i){
+                this.fnOk();
+                console.log('第:'+_i.index+' 加载错误  '+_i.src);
+            };
+            ImgLoad.prototype.fnOk = function(){
+                this.offon++;
+                this.ratio=Math.ceil(this.offon/this.o.length*100);
+                this.goFn();
+                if(this.offon >= this.o.length){ this.overFn();};
+            };
+
+            var oLoadingL=document.querySelector('#div1');
+            window.onload=function(){
+                var goIL=new ImgLoad(
+                        aImg1
+                        ,function(){oLoadingL.innerHTML+=goIL.ratio+"%<br/>";}
+                        ,function(){alert('预加载结束')}
+                    );
+            };
+        </script>
+    </body>
+</html>

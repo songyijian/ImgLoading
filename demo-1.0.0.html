@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html> 
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=640,target-densitydpi=device-dpi,user-scalable=no" />
+    <title>预加载_oop</title>
+    <style type="text/css">
+    	/*预加载 背景板*/
+    	.img_loading_bg{ display: block; height: 100%; width: 100%; position: fixed; top: 0; left: 0; background: rgba(0,0,0,1); z-index:99;}
+    	.mg_loading_process{ width:300px; height: 300px; position: absolute;  top: 45%; left: 50%; margin-top:-150px ; margin-left: -150px; }
+    	.mg_loading_process span{ text-align: center; font-size: 30px; color: #FFFFFF;}
+    </style>
+</head>
+
+<body>
+    <div class="img_loading_bg" id="img_loading_bg">
+    	<div class="mg_loading_process">
+    		<img src="" alt="" />
+    		<span id="loading_number">32562</span>
+    	</div>
+    </div>
+    
+    
+    
+    <script src="src/ImgLoading.1.0.0.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        //要加载的图片 
+        var aImg1=[
+        	'http://img2.cache.netease.com/f2e/health/jiankan_2016_guanaidanshengou/images/qiu-2.gif',
+            'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/zailaiBtn.png',
+            'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/yes.png',
+            'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/tai.png',
+            'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t7_a.png',
+            'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t7_b.png',
+            'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t7_t.png',
+            'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t3_b.png',
+            'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t1_b.png',
+            'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t5.jpg',
+            'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t5_a.png',
+            'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/jg_1.png',
+            'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t6_b.png',
+            'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/bgBg.jpg',
+            'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/fenxiangweixin.png',
+            'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t6.jpg',
+            'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/p1bg.jpg',
+            'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/jg_3.png',
+            'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/btnGo.png',
+            'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/jiong.png',
+            'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t1_t.png',
+            'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t1_a.png',
+            'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/ren.gif',
+            'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t6_t.png',
+            'http://img1.cache.netease.com/f2e/health/huoyanjinjing/images/t4--.jpg'
+        ];
+
+
+        
+        /*
+       		ImgLoading 1.0.0  图片预加载软件 简易画板 
+			作者：songyijian 
+			发布：2016.12.26
+			
+			API
+				arr	//* array 必填 要加载图片的连数组
+				
+				new ImgLoading(arr,{
+					"init":function(){},		//fn（_this） 初始化回调
+           			"errFn":function(img){},	//fn(img) ——返回加载错误  图片对象 
+           			"okFn":function(img){},		//fn(img) ——返回成功  图片对象 
+           			"goFn": function(_this){},	//fn(_this)——返回this 每张加载回调 	//this.index进度
+           			"overFn":function(_this){}  //fn(_this)——返回this 全部完成 
+					
+			  	})
+        * */
+       
+		var imgLoadingBg = document.getElementById("img_loading_bg");
+		var loadingNumber = document.getElementById("loading_number");
+			imgLoadingBg.style.display="block";
+			//loadingNumber.innerHTML = _this.ratio;
+			//imgLoadingBg.style.display="none";
+       		
+
+		
+        new ImgLoading(aImg1,{
+   			"goFn":function(_this){
+     			loadingNumber.innerHTML = _this.ratio;
+     			console.log(_this.index +' : '+ _this.ratio)
+   			},
+   			"overFn":function(){
+				imgLoadingBg.style.display="none";
+     			console.log("ok")
+   			},
+   			"errFn":function(img){
+     			console.log("err : "+img)
+   			},
+   			"okFn":function(img){
+   				//document.write(img.src+'</br>')
+   			}
+        });
+  
+    </script>
+</body>
+</html>
