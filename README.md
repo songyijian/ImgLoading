@@ -2,14 +2,10 @@
 
 1.2.0 - 跟新内容 ： 第二个参数如果是fn 就被视作完成回调 （推荐试用最新版本）
 	
-##API
 
-
-
-	
 ```
-	
-		arr	//* array 必填 要加载图片的连数组
+API
+	arr	//* array 必填 要加载图片的连数组
 	
 	new ImgLoading(arr,{
 		"init":function(){},		//fn（_this） 初始化回调
