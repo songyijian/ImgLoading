@@ -70,30 +70,30 @@
 	        if(_this.oimg.complete){
 	        	_this.data.goFn(_this);
 	        	_this.data.okFn(_this.oimg);
-	        	_this.index=i+1;
+	        	_this.index=++i;
+				_this.ratio=Math.ceil((_this.index/(_this.arrLength-1))*100)+'%';
 	        	loginGo(_this.index);
-				_this.ratio=parseInt((_this.index/_this.arrLength)*100)+'%';
 	        	return;
 	        }
 	        
 	        _this.oimg.onload=function(){
 	        	_this.data.okFn(this);
 	        	_this.oimg.onload=null;
-	        	_this.index=i+1;
+	        	_this.index=++i;
+				_this.ratio=Math.ceil((_this.index/(_this.arrLength-1))*100)+'%';
 	        	loginGo(_this.index);
-				_this.ratio=parseInt((_this.index/_this.arrLength)*100)+'%';
 	        };
 	        
 	        _this.oimg.onerror=function(){
 	        	_this.data.errFn(this);
 	        	_this.oimg.onerror=null;
-	        	_this.index=i+1;
+	        	_this.index=++i;
+				_this.ratio=Math.ceil((_this.index/(_this.arrLength-1))*100)+'%';
 	        	loginGo(_this.index);
-				_this.ratio=parseInt((_this.index/_this.arrLength)*100)+'%';
 	        };
-	        
+	       
 	        _this.data.goFn(_this); 
-		})(0);
+		})(this.index);
 	};
 	
 	
@@ -109,40 +109,3 @@ if (typeof(module) !== 'undefined'){
     });
 };
 
-
-
-/*
- * 0.1.0 之前的异步版本
-function ImgLoad(o,goFn,overFn){
-    this.offon=0;
-    this.ratio=0;
-    this.o=o;
-    this.goFn=goFn;
-    this.overFn=overFn;
-    this.init();
-};
-ImgLoad.prototype.init = function(){
-    var This=this;
-    for (var i=0; i<this.o.length; i++) {
-        this.oimg=new Image();
-        this.oimg.onload=function(){var _i=this; This.fnonload(_i);};
-        this.oimg.onerror=function(){var _i=this; This.fnerror(_i);};
-        this.oimg.src=this.o[i];
-        this.oimg.index=i;
-    };
-};
-ImgLoad.prototype.fnonload = function(_i){
-    this.fnOk();
-    console.log(this.ratio+'第:'+_i.index+' 正确  '+_i.src);
-};
-ImgLoad.prototype.fnerror=function(_i){
-    this.fnOk();
-    console.log('第:'+_i.index+' 加载错误  '+_i.src);
-};
-ImgLoad.prototype.fnOk = function(){
-    this.offon++;
-    this.ratio=Math.ceil(this.offon/this.o.length*100);
-    this.goFn();
-    if(this.offon >= this.o.length){ this.overFn();};
-};
- * */
