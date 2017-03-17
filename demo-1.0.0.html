@@ -16,7 +16,7 @@
     <div class="img_loading_bg" id="img_loading_bg">
     	<div class="mg_loading_process">
     		<img src="" alt="" />
-    		<span id="loading_number">32562</span>
+    		<span id="loading_number">。。。</span>
     	</div>
     </div>
     
@@ -54,24 +54,6 @@
         ];
 
 
-        
-        /*
-       		ImgLoading 1.2.0  图片预加载软件 简易画板 
-			作者：songyijian 
-			发布：2016.12.26
-			
-			API
-				arr	//* array 必填 要加载图片的连数组
-				
-				new ImgLoading(arr,{
-					"init":function(){},		//fn（_this） 初始化回调
-           			"errFn":function(img){},	//fn(img) ——返回加载错误  图片对象 
-           			"okFn":function(img){},		//fn(img) ——返回成功  图片对象 
-           			"goFn": function(_this){},	//fn(_this)——返回this 每张加载回调 	//this.index进度
-           			"overFn":function(_this){}  //fn(_this)——返回this 全部完成 
-					
-			  	})
-        * */
        
 		var imgLoadingBg = document.getElementById("img_loading_bg");
 		var loadingNumber = document.getElementById("loading_number");
@@ -99,10 +81,10 @@
         });
   
   	//1.2.0 第二个参数如果是fn 就被视作完成回调
-//	new ImgLoading(aImg1,function(){
-//		alert("完成")
-//
-//	});
+	//	new ImgLoading(aImg1,function(){
+	//		alert("完成")
+	//
+	//	});
   
     </script>
 </body>
